@@ -21,6 +21,9 @@
 !*.cmd
 !*.sh
 
+# ignore release command
+release.cmd
+
 # Add proc file
 !Procfile
 
