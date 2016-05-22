@@ -23,6 +23,6 @@ GITHUB
     modules/Octokit/Octokit.fsx (8c077f35f8cd0350485109ddd1810dafe9885d1a)
       Octokit
   remote: halcwb/GenBuild
-    scripts/appveyor.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)
-    scripts/targets.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)
-    scripts/travis.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)
+    scripts/appveyor.fsx (4fdb65a2d40f2ddac565a82c37c3dd2c9f1482fc)
+    scripts/targets.fsx (4fdb65a2d40f2ddac565a82c37c3dd2c9f1482fc)
+    scripts/travis.fsx (4fdb65a2d40f2ddac565a82c37c3dd2c9f1482fc)
