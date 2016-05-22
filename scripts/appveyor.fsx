@@ -1,4 +1,4 @@
-#I "./../packages/Newtonsoft.Json/lib/net45/"
+#I "../../../../packages/Newtonsoft.Json/lib/net45/"
 #r "Newtonsoft.Json.dll"
 open Newtonsoft.Json
 

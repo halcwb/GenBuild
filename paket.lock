@@ -22,3 +22,8 @@ GITHUB
   remote: fsharp/FAKE
     modules/Octokit/Octokit.fsx (8c077f35f8cd0350485109ddd1810dafe9885d1a)
       Octokit
+  remote: halcwb/GenBuild
+    docs/tools/generate.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)
+    scripts/appveyor.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)
+    scripts/build_.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)
+    scripts/travis.fsx (db6b4a11e7dd0f86cb6f6149a820022f3f5c0562)

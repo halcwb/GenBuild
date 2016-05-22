@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------------------
 // FAKE build script
 // --------------------------------------------------------------------------------------
-#I "../packages/FAKE/tools/"
+#I "../../../../packages/FAKE/tools/"
 
 #r @"FakeLib.dll"
 open Fake
@@ -13,13 +13,13 @@ open System
 open System.IO
 #if MONO
 #else
-#load "../packages/SourceLink.Fake/tools/Fake.fsx"
+#load "../../../../packages/SourceLink.Fake/tools/Fake.fsx"
 open SourceLink
 #endif
 
 #load "travis.fsx"
 #load "appveyor.fsx"
-#load "settings.fsx"
+#load "../../../../scripts/settings.fsx"
 
 // --------------------------------------------------------------------------------------
 // START TODO: Provide project-specific details below
@@ -381,7 +381,7 @@ Target "ReleaseDocs" (fun _ ->
 )
 
 
-#load "../paket-files/fsharp/FAKE/modules/Octokit/Octokit.fsx"
+#load "../../../paket-files/fsharp/FAKE/modules/Octokit/Octokit.fsx"
 open Octokit
 
 Target "Release" (fun _ ->

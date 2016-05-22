@@ -16,7 +16,7 @@ let project = "GenBuild"
 
 // Short summary of the project
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
-let summary = "A library with utility functions"
+let summary = "A dummy library to test a generic build script"
 
 // Longer description of the project
 // (used as a description for NuGet package; line breaks are automatically cleaned up)

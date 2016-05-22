@@ -3,5 +3,5 @@
 // --------------------------------------------------------------------------------------
 System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
-#load "scripts/build_.fsx"
+#load "paket-files/halcwb/GenBuild/scripts/targets.fsx"
 

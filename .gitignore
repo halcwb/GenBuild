@@ -23,6 +23,7 @@
 
 # ignore release command
 release.cmd
+publishnuget.cmd
 
 # Add proc file
 !Procfile

@@ -1,5 +1,5 @@
-#I "../../scripts/"
-#load "Settings.fsx"
+#I "../../../../../scripts/"
+#load "settings.fsx"
 
 // --------------------------------------------------------------------------------------
 // Builds the documentation from `.fsx` and `.md` files in the 'docs/content' directory
