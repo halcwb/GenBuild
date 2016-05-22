@@ -21,9 +21,6 @@
 !*.cmd
 !*.sh
 
-# ignore specific settings file
-settings.fsx
-
 # Add proc file
 !Procfile
 
