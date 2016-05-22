@@ -56,12 +56,12 @@ settings.fsx
 # Add source files
 !/scripts/
 !/src/
-!/src/Informedica.GenUtils.Lib/
-!/src/Informedica.GenUtils.Lib/Scripts/
+!/src/GenBuild/
+!/src/GenBuild/Scripts/
 
 # Add test files
 !/tests/
-!/tests/Informedica.GenUtils.Tests/
+!/tests/GenBuild.Tests/
 
 # Ignore generated documentation files
 /docs/content/**/*.md
