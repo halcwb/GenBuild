@@ -13,4 +13,3 @@ github fsharp/FAKE modules/Octokit/Octokit.fsx
 github halcwb/GenBuild /scripts/targets.fsx
 github halcwb/GenBuild /scripts/travis.fsx
 github halcwb/GenBuild /scripts/appveyor.fsx
-github halcwb/GenBuild /docs/tools/generate.fsx
