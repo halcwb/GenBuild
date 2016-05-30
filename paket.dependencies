@@ -13,3 +13,12 @@ github fsharp/FAKE modules/Octokit/Octokit.fsx
 github halcwb/GenBuild /scripts/targets.fsx
 github halcwb/GenBuild /scripts/travis.fsx
 github halcwb/GenBuild /scripts/appveyor.fsx
+
+// group test
+
+nuget FsUnit
+nuget NUnit ~> 2
+nuget NUnit.Runners ~> 2
+nuget Unquote
+nuget FsCheck
+nuget FsCheck.NUnit
