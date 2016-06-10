@@ -13,6 +13,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		paket.dependencies = paket.dependencies
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{54C46FC2-4314-4DE2-971F-2C97D6729E9F}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\appveyor.fsx = scripts\appveyor.fsx
+		scripts\settings.fsx = scripts\settings.fsx
+		scripts\targets.fsx = scripts\targets.fsx
+		scripts\travis.fsx = scripts\travis.fsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
