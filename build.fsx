@@ -9,6 +9,13 @@ System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 // Run all targets by default. Invoke 'build <Target>' to override
 
 
+open Fake
+#if MONO
+#else
+open SourceLink
+#endif
+
+
 Target "All" DoNothing
 
 
