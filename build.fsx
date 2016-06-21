@@ -18,29 +18,6 @@ open SourceLink
 
 Target "All" DoNothing
 
-open System
-open Fake.Testing
-let testAssemblies = Settings.testAssemblies
-
-Target "NUnit3" <| fun _ ->
-    match !! testAssemblies with
-    | tests when tests |> Seq.length > 0 ->
-        let color = Console.ForegroundColor
-        try
-            Console.ForegroundColor <- ConsoleColor.Cyan
-            failwith "Oops"
-            tests
-            |> NUnit3 (fun p ->
-                { p with
-                    ShadowCopy = false
-                    TimeOut = TimeSpan.FromMinutes 20. })
-            Console.ForegroundColor <- color
-        with
-        | exn -> 
-            Console.ForegroundColor <- color
-            failwith <| sprintf "Could not run tests because: %s" (string exn) 
-    | _ -> ()
-
 
 "Clean"
   ==> "AssemblyInfo"

@@ -6,7 +6,7 @@ Generic build and doc generating scripts.
 Mono | .NET | 
 ---- | ---- | 
 [![Mono CI Build Status](https://img.shields.io/travis/halcwb/GenBuild/master.svg)](https://travis-ci.org/halcwb/GenBuild) | 
-[![.NET Build Status](https://img.shields.io/appveyor/ci/halcwb/GenBuild/master.svg)](https://ci.appveyor.com/project/halcwb/GenBuild)
+[![.NET Build Status](https://img.shields.io/appveyor/ci/halcwb/GenBuild/master.svg)](https://ci.appveyor.com/project/halcwb/GenBuild) |
 
 
 # Background
