@@ -1,4 +1,4 @@
 Unquote
 FsCheck
-FsCheck.NUnit
 FsUnit
+NUnit.Runners

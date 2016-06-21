@@ -1,13 +1,9 @@
 REDIRECTS: ON
 NUGET
   remote: https://www.nuget.org/api/v2
-    FAKE (4.28)
+    FAKE (4.29.2)
     FsCheck (2.5)
       FSharp.Core (>= 3.1.2.5)
-    FsCheck.NUnit (2.5)
-      FsCheck (>= 2.5)
-      NUnit (>= 2.6.4 < 2.7)
-      NUnit.Runners (>= 2.6.4 < 2.7)
     FSharp.Compiler.Service (2.0.0.6)
     FSharp.Core (4.0.0.1)
     FSharp.Formatting (2.14.4)
@@ -15,9 +11,9 @@ NUGET
       FSharpVSPowerTools.Core (>= 2.3 < 2.4)
     FSharpVSPowerTools.Core (2.3)
       FSharp.Compiler.Service (>= 2.0.0.3)
-    FsUnit (1.4.1)
+    FsUnit (2.2)
       FSharp.Core (>= 3.1.2.5)
-      NUnit (2.6.4)
+      NUnit (3.2.1)
     Microsoft.Bcl (1.1.10) - framework: net10, net11, net20, net30, net35, net40, net40-full
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: net10, net11, net20, net30, net35, net40, net40-full
@@ -25,17 +21,27 @@ NUGET
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Newtonsoft.Json (8.0.3)
-    NUnit (2.6.4)
-    NUnit.Runners (2.6.4)
-    Octokit (0.19)
+    NUnit (3.2.1)
+    NUnit.ConsoleRunner (3.2.1)
+    NUnit.Extension.NUnitProjectLoader (3.2.1)
+    NUnit.Extension.NUnitV2Driver (3.2.1)
+    NUnit.Extension.NUnitV2ResultWriter (3.2.1)
+    NUnit.Extension.VSProjectLoader (3.2.1)
+    NUnit.Runners (3.2.1)
+      NUnit.ConsoleRunner (3.2.1)
+      NUnit.Extension.NUnitProjectLoader (3.2.1)
+      NUnit.Extension.NUnitV2Driver (3.2.1)
+      NUnit.Extension.NUnitV2ResultWriter (3.2.1)
+      NUnit.Extension.VSProjectLoader (3.2.1)
+    Octokit (0.20)
       Microsoft.Net.Http  - framework: net10, net11, net20, net30, net35, net40, net40-full
     SourceLink.Fake (1.1)
     Unquote (3.1.1)
 GITHUB
   remote: fsharp/FAKE
-    modules/Octokit/Octokit.fsx (60acb2f035cb39f2bd40a6c58a4de10d915da248)
+    modules/Octokit/Octokit.fsx (c063bf415dac7f7d4df4c37fe76badce76cae3c3)
       Octokit
   remote: halcwb/GenBuild
-    scripts/appveyor.fsx (52f504854c730c763db7a6ab2a834fce334cecf5)
-    scripts/targets.fsx (52f504854c730c763db7a6ab2a834fce334cecf5)
-    scripts/travis.fsx (52f504854c730c763db7a6ab2a834fce334cecf5)
+    scripts/appveyor.fsx (bb4b0bf38b3adb8a84e3c20e6177b550d3f4dca0)
+    scripts/targets.fsx (bb4b0bf38b3adb8a84e3c20e6177b550d3f4dca0)
+    scripts/travis.fsx (bb4b0bf38b3adb8a84e3c20e6177b550d3f4dca0)
