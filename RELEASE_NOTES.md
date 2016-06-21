@@ -1,3 +1,7 @@
+#### 0.2.1-beta - June 22 2016
+* Updated nunit to use latest version
+* FsCheck now without nunit integration
+
 #### 0.2.0-beta - June 22 2016
 * Updated nunit to use latest version
 * FsCheck now without nunit integration
