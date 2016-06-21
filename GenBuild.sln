@@ -47,10 +47,10 @@ Global
 		$1.FileWidth = 120
 		$1.inheritsSet = VisualStudio
 		$1.inheritsScope = text/plain
-		$1.scope = text/x-fsharp
+		$1.scope = text/plain
 		$0.FSharpFormattingPolicy = $2
 		$2.DefaultFormat = $3
-		$3.IndentOnTryWith = False
+		$3.IndentOnTryWith = True
 		$3.ReorderOpenDeclaration = False
 		$3.SpaceAfterComma = True
 		$3.SpaceAfterSemicolon = True

@@ -18,6 +18,23 @@ open SourceLink
 
 Target "All" DoNothing
 
+open System
+open Fake.Testing
+let testAssemblies = Settings.testAssemblies
+
+Target "NUnit3" <| fun _ ->
+    match !! testAssemblies with
+    | tests when tests |> Seq.length > 0 ->
+        Console.ForegroundColor <- ConsoleColor.Cyan
+        tests
+        |> NUnit3 (fun p ->
+            { p with
+                ShadowCopy = false
+                TimeOut = TimeSpan.FromMinutes 20. })
+        Console.ForegroundColor <- ConsoleColor.White
+    | _ -> ()
+
+
 
 "Clean"
   ==> "AssemblyInfo"
