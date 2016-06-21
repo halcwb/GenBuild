@@ -23,7 +23,7 @@ Target "All" DoNothing
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "CopyBinaries"
-  ==> "RunTests"
+  ==> "NUnit3"
   ==> "GenerateReferenceDocs"
   ==> "GenerateDocs"
   ==> "All"
