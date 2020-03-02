@@ -8,8 +8,8 @@
 
 macOS/Linux | Windows
 --- | ---
-[![Travis Badge](https://travis-ci.org/MyGithubUsername/GenBuild.svg?branch=master)](https://travis-ci.org/MyGithubUsername/GenBuild) | [![Build status](https://ci.appveyor.com/api/projects/status/github/MyGithubUsername/GenBuild?svg=true)](https://ci.appveyor.com/project/MyGithubUsername/GenBuild)
-[![Build History](https://buildstats.info/travisci/chart/MyGithubUsername/GenBuild)](https://travis-ci.org/MyGithubUsername/GenBuild/builds) | [![Build History](https://buildstats.info/appveyor/chart/MyGithubUsername/GenBuild)](https://ci.appveyor.com/project/MyGithubUsername/GenBuild)  
+[![Travis Badge](https://travis-ci.org/halcwb/GenBuild.svg?branch=master)](https://travis-ci.org/halcwb/GenBuild) | [![Build status](https://ci.appveyor.com/api/projects/status/github/halcwb/GenBuild?svg=true)](https://ci.appveyor.com/project/halcwb/GenBuild)
+[![Build History](https://buildstats.info/travisci/chart/halcwb/GenBuild)](https://travis-ci.org/halcwb/GenBuild/builds) | [![Build History](https://buildstats.info/appveyor/chart/halcwb/GenBuild)](https://ci.appveyor.com/project/halcwb/GenBuild)  
 
 ## NuGet 
 
