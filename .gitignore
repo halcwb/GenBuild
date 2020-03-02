@@ -64,6 +64,10 @@
 !/tests/
 !/tests/GenBuild.Tests/
 
+# Add documentation tools 
+!/docsTool/
+!/docsTool/templates/
+
 # Add documentation source files
 !/docsSrc/
 !/docsSrc/**
