@@ -17,9 +17,9 @@
 # Add fsx files
 !*.fsx
 
-# ignore release command
-release.cmd
-publishnuget.cmd
+# Add build files
+!build.sh
+!build.cmd
 
 # Add proc file
 !Procfile
@@ -28,9 +28,9 @@ publishnuget.cmd
 !/.config/
 !/.config/*.json
 
-# Add paket bootstrapper
+# Add paket 
 !/.paket/
-!/.paket/paket.bootstrapper.exe
+!/.paket/Paket.Restore.targets
 
 # Add dependencies file
 !paket.dependencies
