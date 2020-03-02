@@ -17,7 +17,6 @@
 # Add fsx files
 !*.fsx
 
-
 # ignore release command
 release.cmd
 publishnuget.cmd
@@ -67,20 +66,10 @@ publishnuget.cmd
 
 # Add documentation source files
 !/docsSrc/
-!/docsSrc/*
-
-# Ignore generated documentation files
-/docs/content/**/*.md
+!/docsSrc/**
 
 # Add documentation
 !/docs/
-!/docs/content/
-!/docs/tools/
-!/docs/tools/templates/
-!/docs/tools/templates/*.cshtml
-!/docs/files/
-!/docs/files/img/
-!/docs/files/img/*.png
-
+!/docs/**
 
 
