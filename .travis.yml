@@ -1,6 +1,22 @@
 language: csharp
+sudo: required
+dist: xenial
 
-sudo: false  # use the new container-based Travis infrastructure 
+dotnet: 3.0.100
+mono:
+  - latest # => "stable release"
+  - alpha
+  - beta
+  - weekly # => "latest commits"
+os:
+  - linux
 
-script: 
-  - ./build.sh nunit3
+script:
+  - ./build.sh
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - mono: alpha
+    - mono: beta
+    - mono: weekly

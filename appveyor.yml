@@ -1,18 +1,14 @@
-environment:
-  deploy_password:
-
-shallow_clone: true
-
-before_build:
-
+init:
+  - git config --global core.autocrlf input
 build_script:
-  - build.cmd nunit3
-
+  - cmd: build.cmd
 test: off
-
-test_script:
-  #- nuget restore tests\Tests.sln
-  #- test.cmd
-  
-deploy_script:
-  #- deploy.cmd
+version: 0.0.1.{build}
+image: Visual Studio 2019
+install:
+  - cmd: choco install dotnetcore-sdk -y
+artifacts:
+  - path: bin
+    name: bin
+  - path: dist
+    name: dist

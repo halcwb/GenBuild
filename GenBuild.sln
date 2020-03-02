@@ -1,62 +1,74 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "GenBuild", "src\GenBuild\GenBuild.fsproj", "{34566F45-56AE-4787-90AD-ED7215D6ED7C}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5E1129F3-440C-456D-AC0E-547E1D86E8C1}"
 EndProject
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "GenBuild.Tests", "tests\GenBuild.Tests\GenBuild.Tests.fsproj", "{96650BE0-5535-4ED6-B55B-72DF71DDEBFF}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "GenBuild", "src\GenBuild\GenBuild.fsproj", "{8D6967B6-38A4-4AD6-8952-B0E59EE68345}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2CF335D2-1410-433C-834E-270FB16F5B48}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDB15DE0-F423-4B9A-BAAC-E31E61780E03}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "GenBuild.Tests", "tests\GenBuild.Tests\GenBuild.Tests.fsproj", "{864332E4-DF39-4AE3-90A8-CFAC63905B17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{E99D4234-B7B4-4209-80A9-341471978031}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.travis.yml = .travis.yml
+		appveyor.yml = appveyor.yml
+		build.cmd = build.cmd
 		build.fsx = build.fsx
+		build.sh = build.sh
+		CHANGELOG.md = CHANGELOG.md
+		Directory.Build.props = Directory.Build.props
+		LICENSE.md = LICENSE.md
 		paket.dependencies = paket.dependencies
 		README.md = README.md
-		RELEASE_NOTES.md = RELEASE_NOTES.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{54C46FC2-4314-4DE2-971F-2C97D6729E9F}"
-	ProjectSection(SolutionItems) = preProject
-		scripts\appveyor.fsx = scripts\appveyor.fsx
-		scripts\settings.fsx = scripts\settings.fsx
-		scripts\targets.fsx = scripts\targets.fsx
-		scripts\travis.fsx = scripts\travis.fsx
 	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34566F45-56AE-4787-90AD-ED7215D6ED7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34566F45-56AE-4787-90AD-ED7215D6ED7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34566F45-56AE-4787-90AD-ED7215D6ED7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34566F45-56AE-4787-90AD-ED7215D6ED7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96650BE0-5535-4ED6-B55B-72DF71DDEBFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96650BE0-5535-4ED6-B55B-72DF71DDEBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96650BE0-5535-4ED6-B55B-72DF71DDEBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96650BE0-5535-4ED6-B55B-72DF71DDEBFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Debug|x64.Build.0 = Debug|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Debug|x86.Build.0 = Debug|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Release|x64.ActiveCfg = Release|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Release|x64.Build.0 = Release|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345}.Release|x86.Build.0 = Release|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Debug|x64.Build.0 = Debug|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Debug|x86.Build.0 = Debug|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x64.ActiveCfg = Release|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x64.Build.0 = Release|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x86.ActiveCfg = Release|Any CPU
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.FileWidth = 120
-		$1.inheritsSet = VisualStudio
-		$1.inheritsScope = text/plain
-		$1.scope = text/x-fsharp
-		$0.FSharpFormattingPolicy = $2
-		$2.DefaultFormat = $3
-		$3.IndentOnTryWith = True
-		$3.ReorderOpenDeclaration = False
-		$3.SpaceAfterComma = True
-		$3.SpaceAfterSemicolon = True
-		$3.SpaceAroundDelimiter = True
-		$3.SpaceBeforeArgument = True
-		$3.SpaceBeforeColon = True
-		$2.scope = text/x-fsharp
+	GlobalSection(NestedProjects) = preSolution
+		{8D6967B6-38A4-4AD6-8952-B0E59EE68345} = {5E1129F3-440C-456D-AC0E-547E1D86E8C1}
+		{864332E4-DF39-4AE3-90A8-CFAC63905B17} = {DDB15DE0-F423-4B9A-BAAC-E31E61780E03}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {893860F6-FE2E-4155-8F0A-45519B4E997A}
 	EndGlobalSection
 EndGlobal

@@ -17,9 +17,6 @@
 # Add fsx files
 !*.fsx
 
-# Add command and batch files
-!*.cmd
-!*.sh
 
 # ignore release command
 release.cmd
@@ -27,6 +24,10 @@ publishnuget.cmd
 
 # Add proc file
 !Procfile
+
+# Add local tools config
+!/.config/
+!/.config/*.json
 
 # Add paket bootstrapper
 !/.paket/
@@ -63,6 +64,10 @@ publishnuget.cmd
 # Add test files
 !/tests/
 !/tests/GenBuild.Tests/
+
+# Add documentation source files
+!/docsSrc/
+!/docsSrc/*
 
 # Ignore generated documentation files
 /docs/content/**/*.md
