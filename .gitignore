@@ -28,10 +28,6 @@
 !/.config/
 !/.config/*.json
 
-# Add paket 
-!/.paket/
-!/.paket/Paket.Restore.targets
-
 # Add dependencies file
 !paket.dependencies
 !paket.lock
