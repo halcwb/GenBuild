@@ -102,7 +102,8 @@ module ProjInfo =
         loader.LoadProjects [ projPath ]
         let fcsBinder = FCSBinder(netFwInfo, loader, fcs)
         match fcsBinder.GetProjectOptions(projPath) with
-        | Some options ->
+        | Ok options ->
+            // printfn "OtherOptions -> %A" options
             let references =
                 options.OtherOptions
                 |> Array.filter(fun s ->
@@ -113,7 +114,6 @@ module ProjInfo =
                     s.Remove(0,RefPrefix.Length)
                     |> FileInfo
                 )
-
             let dpwPo =
                 match options.ExtraProjectInfo with
                 | Some (:? ProjectOptions as dpwPo) -> dpwPo
@@ -121,8 +121,8 @@ module ProjInfo =
             let targetPath = findTargetPath dpwPo.ExtraProjectInfo.TargetPath
             { References = references ; TargetPath = targetPath}
 
-        | None ->
-            failwithf "Couldn't read project %s" projPath
+        | Error e ->
+            failwithf "Couldn't read project %s - %A" projPath e
 
 
 module GenerateDocs =
@@ -227,34 +227,52 @@ module GenerateDocs =
             Text.RegularExpressions.Regex.Replace(state, pattern, replacement)
         )
 
+    let stringContainsInsenstive (filter : string) (textToSearch : string) =
+        textToSearch.IndexOf(filter, StringComparison.CurrentCultureIgnoreCase) >= 0
+
     let generateDocs (libDirs : ProjInfo.References) (docSourcePaths : IGlobbingPattern) (cfg : Configuration) =
         let parse (fileName : string) source =
             let doc =
-                let references =
+                let rref =
+                    libDirs
+                    |> Array.map(fun fi -> fi.FullName)
+                    |> Array.distinct
+                    |> Array.map(sprintf "-r:%s")
+
+                let iref =
                     libDirs
                     |> Array.map(fun fi -> fi.DirectoryName)
                     |> Array.distinct
                     |> Array.map(sprintf "-I:\"%s\"")
-                let runtimeDeps =
+
+                let fsiArgs =
                     [|
-                        "-r:System.Runtime"
-                        "-r:System.Net.WebClient"
+                        yield "--noframework" // error FS1222: When mscorlib.dll or FSharp.Core.dll is explicitly referenced the --noframework option must also be passed
+                        yield! iref
                     |]
-                let compilerOptions = String.Join(' ', Array.concat [runtimeDeps; references])
-                let fsiEvaluator = FSharp.Literate.FsiEvaluator(references)
+                let compilerOptions =
+                    [|
+                        yield "--targetprofile:netstandard"
+                        yield "-r:System.Net.WebClient" // FSharp.Formatting on Windows requires this to render fsharp sections in markdown for some reason
+                        yield!
+                            rref
+                            |> Seq.filter(stringContainsInsenstive "fsharp.core.dll" >> not)
+                            |> Seq.filter(stringContainsInsenstive "NETStandard.Library.Ref" >> not) // --targetprofile:netstandard will find the "BCL" libraries
+                    |]
+                let fsiEvaluator = FSharp.Literate.FsiEvaluator(fsiArgs)
                 match Path.GetExtension fileName with
                 | ".fsx" ->
                     Literate.ParseScriptString(
                         source,
                         path = fileName,
-                        compilerOptions = compilerOptions,
+                        compilerOptions = (compilerOptions |> String.concat " "),
                         fsiEvaluator = fsiEvaluator)
                 | ".md" ->
                     let source = regexReplace cfg source
                     Literate.ParseMarkdownString(
                         source,
                         path = fileName,
-                        compilerOptions = compilerOptions,
+                        compilerOptions = (compilerOptions |> String.concat " "),
                         fsiEvaluator = fsiEvaluator
                     )
                 | others -> failwithf "FSharp.Literal does not support %s file extensions" others
@@ -304,15 +322,12 @@ module GenerateDocs =
     let generateAPI (projInfos : ProjInfo.ProjInfo array) (cfg : Configuration) =
         let generate (projInfo :  ProjInfo.ProjInfo) =
             Trace.tracefn "Generating API Docs for %s" projInfo.TargetPath.FullName
-            let mscorlibDir =
-                (typedefof<System.Runtime.MemoryFailPoint>.GetType().Assembly.Location) //Find runtime dll]
-                    |> Path.GetDirectoryName
             let references =
                 projInfo.References
                 |> Array.toList
                 |> List.map(fun fi -> fi.DirectoryName)
                 |> List.distinct
-            let libDirs = mscorlibDir :: references
+            let libDirs = references
             let targetApiDir = docsApiDir cfg.DocsOutputDirectory.FullName @@ IO.Path.GetFileNameWithoutExtension(projInfo.TargetPath.Name)
             let generatorOutput =
                 MetadataFormat.Generate(
@@ -361,11 +376,19 @@ module GenerateDocs =
         |> Seq.toList
 
     let buildDocs (projInfos : ProjInfo.ProjInfo array) (cfg : Configuration) =
-        let refs = projInfos |> Seq.collect (fun p -> p.References) |> Seq.distinct |> Seq.toArray
+        let refs =
+            [|
+                yield! projInfos |> Array.collect (fun p -> p.References) |> Array.distinct
+                yield! projInfos |> Array.map(fun p -> p.TargetPath)
+            |]
         copyAssets cfg
         let generateDocs =
             async {
-                return generateDocs refs (docsFileGlob cfg.DocsSourceDirectory.FullName) cfg
+                try
+                    return generateDocs refs (docsFileGlob cfg.DocsSourceDirectory.FullName) cfg
+                with e ->
+                    eprintfn "generateDocs failure %A" e
+                    return raise e
             }
         let generateAPI =
             async {
@@ -387,7 +410,12 @@ module GenerateDocs =
         let renderGeneratedDocs = renderGeneratedDocs true
         initialDocs |> renderGeneratedDocs cfg
 
-        let refs = projInfos |> Seq.collect (fun p -> p.References) |> Seq.distinct |> Seq.toArray
+        let refs =
+            [|
+                yield! projInfos |> Array.collect (fun p -> p.References) |> Array.distinct
+                yield! projInfos |> Array.map(fun p -> p.TargetPath)
+            |]
+
         let d1 =
             docsFileGlob cfg.DocsSourceDirectory.FullName
             |> ChangeWatcher.run (fun changes ->
@@ -440,6 +468,7 @@ module WebServer =
     open Microsoft.AspNetCore.Http
     open System.Net.WebSockets
     open System.Diagnostics
+    open System.Runtime.InteropServices
 
     let hostname = "localhost"
     let port = 5000
@@ -504,14 +533,28 @@ module WebServer =
             .Run()
 
     let openBrowser url =
-        //https://github.com/dotnet/corefx/issues/10361
+        let waitForExit (proc : Process) =
+            proc.WaitForExit()
+            if proc.ExitCode <> 0 then printfn "opening browser failed"
         try
             let psi = ProcessStartInfo(FileName = url, UseShellExecute = true)
-            let proc = Process.Start psi
-            proc.WaitForExit()
-            if proc.ExitCode <> 0 then failwithf "opening browser failed"
-        with
-        | _ -> printfn "cannot open browser"
+            Process.Start psi
+            |> waitForExit
+        with e ->
+            //https://github.com/dotnet/corefx/issues/10361
+            if RuntimeInformation.IsOSPlatform(OSPlatform.Windows) then
+                let url = url.Replace("&", "&^")
+                let psi = ProcessStartInfo("cmd", (sprintf "/c %s" url), CreateNoWindow=true)
+                Process.Start psi
+                |> waitForExit
+            elif RuntimeInformation.IsOSPlatform(OSPlatform.Linux) then
+                Process.Start("xdg-open", url)
+                |> waitForExit
+            elif RuntimeInformation.IsOSPlatform(OSPlatform.OSX) then
+                Process.Start("open", url)
+                |> waitForExit
+            else
+                failwithf "failed to open browser on current OS"
 
     let serveDocs docsDir =
         async {
@@ -520,6 +563,23 @@ module WebServer =
         } |> Async.Start
         startWebserver docsDir (sprintf "http://%s:%d" hostname port)
 
+
+open FSharp.Formatting.Common
+open System.Diagnostics
+
+let setupFsharpFormattingLogging () =
+    let setupListener listener =
+        [
+            FSharp.Formatting.Common.Log.source
+            Yaaf.FSharp.Scripting.Log.source
+        ]
+        |> Seq.iter (fun source ->
+            source.Switch.Level <- System.Diagnostics.SourceLevels.All
+            Log.AddListener listener source)
+    let noTraceOptions = TraceOptions.None
+    Log.ConsoleListener()
+    |> Log.SetupListener noTraceOptions System.Diagnostics.SourceLevels.Verbose
+    |> setupListener
 
 open Argu
 open Fake.IO.Globbing.Operators
@@ -552,8 +612,6 @@ let main argv =
                 sprintf "%s.exe" name
             else
                 name
-
-
 
         let parser = ArgumentParser.Create<CLIArguments>(programName = programName, errorHandler = errorHandler)
         let parsedArgs = parser.Parse argv

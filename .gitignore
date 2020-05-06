@@ -24,9 +24,26 @@
 # Add proc file
 !Procfile
 
+# Add devcontainer
+!/.devcontainer/
+!/.devcontainer/*
+
+
 # Add local tools config
 !/.config/
 !/.config/*.json
+
+# Add editor config
+!.editorconfig
+
+# Add vscode config
+!.vscode/
+!.vscode/*.json
+
+# Add github config
+!.github/
+!.github/*.md
+
 
 # Add dependencies file
 !paket.dependencies
@@ -37,6 +54,9 @@
 # Add yml files to ci on appveyor and travis
 !appveyor.yml
 !.travis.yml
+
+# Add directory build props
+!Directory.Build.props
 
 # Add solution file
 !*.sln
@@ -53,12 +73,12 @@
 # Add source files
 !/scripts/
 !/src/
-!/src/GenBuild/
-!/src/GenBuild/Scripts/
+!/src/Informedica.Build.Template/
+!/src/Informedica.Build.Template/Scripts/
 
 # Add test files
 !/tests/
-!/tests/GenBuild.Tests/
+!/tests/Informedica.Build.Tests/
 
 # Add documentation tools 
 !/docsTool/

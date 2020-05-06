@@ -5,26 +5,13 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5E1129F3-440C-456D-AC0E-547E1D86E8C1}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "GenBuild", "src\GenBuild\GenBuild.fsproj", "{8D6967B6-38A4-4AD6-8952-B0E59EE68345}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Informedica.Build.Template", "src\Informedica.Build.Template\Informedica.Build.Template.fsproj", "{8D6967B6-38A4-4AD6-8952-B0E59EE68345}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDB15DE0-F423-4B9A-BAAC-E31E61780E03}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "GenBuild.Tests", "tests\GenBuild.Tests\GenBuild.Tests.fsproj", "{864332E4-DF39-4AE3-90A8-CFAC63905B17}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Informedica.Build.Tests", "tests\Informedica.Build.Tests\Informedica.Build.Tests.fsproj", "{864332E4-DF39-4AE3-90A8-CFAC63905B17}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{E99D4234-B7B4-4209-80A9-341471978031}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		.travis.yml = .travis.yml
-		appveyor.yml = appveyor.yml
-		build.cmd = build.cmd
-		build.fsx = build.fsx
-		build.sh = build.sh
-		CHANGELOG.md = CHANGELOG.md
-		Directory.Build.props = Directory.Build.props
-		LICENSE.md = LICENSE.md
-		paket.dependencies = paket.dependencies
-		README.md = README.md
-	EndProjectSection
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "docsTool", "docsTool\docsTool.fsproj", "{2B56CCE3-61EB-44D6-B32D-E53E8737906B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +47,18 @@ Global
 		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x64.Build.0 = Release|Any CPU
 		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x86.ActiveCfg = Release|Any CPU
 		{864332E4-DF39-4AE3-90A8-CFAC63905B17}.Release|x86.Build.0 = Release|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Debug|x64.Build.0 = Debug|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Release|x64.ActiveCfg = Release|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Release|x64.Build.0 = Release|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B56CCE3-61EB-44D6-B32D-E53E8737906B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

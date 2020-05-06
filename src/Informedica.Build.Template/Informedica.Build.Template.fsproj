@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.1;net471</TargetFrameworks>
+        <TargetFrameworks>netstandard2.1;net472</TargetFrameworks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
     <PropertyGroup>
-        <Title>GenBuild</Title>
-        <Description>GenBuild is a dummy project to test a general build setup</Description>
+        <Title>Informedica.Build.Template</Title>
+        <Description>Informedica.Build.Template is a dummy project to test a MiniScaffold build setup</Description>
 
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
